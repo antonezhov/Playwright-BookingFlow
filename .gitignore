@@ -1,0 +1,5 @@
+# Vusual studio workspace file
+**.code-workspace
+
+# Dependency directory
+node_modules
