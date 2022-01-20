@@ -7,7 +7,6 @@ exports.HomePage = class HomePage {
 
     constructor(page) {
         this.page = page;
-        // this.txtZipCode = 'input[data-test-id=zip-code-input]';
         this.txtZipCode = 'input[name=zipCode] >> nth=2';
         this.btnGetStarted = 'button[data-test-id=zip-code-button] >> nth=2';
         this.btnIntercomClose = 'div[aria-label=Dismiss]';

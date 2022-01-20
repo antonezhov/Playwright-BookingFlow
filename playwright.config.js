@@ -16,7 +16,7 @@ const config = {
     browserName: 'chromium',
       headless: false,
       launchOptions: {
-        slowMo: 200,
+        slowMo: 500,
         
         
       },
