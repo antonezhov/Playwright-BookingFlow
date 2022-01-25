@@ -17,7 +17,7 @@ const config = {
       headless: false,
       
       launchOptions: {
-        slowMo: 150,
+        slowMo: 1000,
         
         
       },

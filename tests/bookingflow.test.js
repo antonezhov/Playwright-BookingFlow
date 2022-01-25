@@ -29,7 +29,7 @@ test('Basic Positive Smoke', async ({ page }) => {
   await bookingflow.fillPhone('(222) 222-222233')
   await bookingflow.submit()
   // Scedule a Call
-  await bookingflow.clickOn(bookingflow.callScheduleLocator)
+  // await bookingflow.clickOn(bookingflow.callScheduleLocator)
   await bookingflow.clickOn(bookingflow.timeSlotLocator0)
   await bookingflow.continue()
   await bookingflow.confirm()
@@ -60,7 +60,7 @@ test('Positive Smoke Shortcut Scenario', async ({ page }) => {
   await bookingflow.fillPhone('(222) 222-222233')
   await bookingflow.submit()
   // Scedule a Call
-  await bookingflow.clickOn(bookingflow.callScheduleLocator)
+  // await bookingflow.clickOn(bookingflow.callScheduleLocator)
   await bookingflow.clickOn(bookingflow.timeSlotLocator0)
   await bookingflow.continue()
   await bookingflow.confirm()
