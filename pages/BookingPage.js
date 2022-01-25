@@ -26,7 +26,7 @@ exports.BookingPage = class BookingPage {
         this.emailLocator = '[placeholder="example@elemy.com"]'
         this.phoneLocator = '[data-test-id="phone-input"]'
         this.timeSlotLocator0 = '[data-test-id="time-slot-0-0"]'
-        this.callScheduleLocator = '[data-test-id="open-time-slots-modal"]'
+        this.callScheduleLocator = 'button[data-test-id="open-time-slots-modal"]'
         this.callMeNowLocator = 'text=Call Me Now'
     }
 
