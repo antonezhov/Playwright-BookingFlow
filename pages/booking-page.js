@@ -1,10 +1,7 @@
 const { test, expect } = require('@playwright/test');
-const data = require('../data/data.js');
 
 
 exports.BookingPage = class BookingPage {
-
-    
 
     constructor(page) {
         this.page = page;

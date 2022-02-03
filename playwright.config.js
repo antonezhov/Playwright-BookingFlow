@@ -3,7 +3,7 @@ const { devices } = require('@playwright/test');
 
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
-  timeout: 60000,
+  timeout: 150000,
   
   use: {
     viewport: { width: 1280, height: 720 },

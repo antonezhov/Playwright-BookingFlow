@@ -1,6 +1,6 @@
 const { test, chromium, expect } = require('@playwright/test')
-const { HomePage } = require('../pages/HomePage.js')
-const { BookingPage } = require('../pages/BookingPage.js')
+const { HomePage } = require('../pages/home-page.js')
+const { BookingPage } = require('../pages/booking-page.js')
 
 
 test('Basic Positive Smoke', async ({ page }) => {
@@ -25,13 +25,13 @@ test('Basic Positive Smoke', async ({ page }) => {
   // Let's Get Started
   await bookingflow.fillFirstName('Autotest')
   await bookingflow.fillLastName('User')
-  await bookingflow.fillEmail('autotest@email.com')
+  await bookingflow.fillEmail('anton.ezhov+autotestleadver@elemy.com')
   await bookingflow.fillPhone('(222) 222-222233')
   await bookingflow.submit()
   // Scedule a Call
   const dt = new Date()
   const hr = dt.getUTCHours
-  if (hr >= 14 && hr < 3) {
+  if (hr >= 3 && hr < 14) {
   await bookingflow.clickOn(bookingflow.callScheduleLocator)
   }
   await bookingflow.clickOn(bookingflow.timeSlotLocator0)
@@ -66,7 +66,7 @@ test('Positive Smoke Shortcut Scenario', async ({ page }) => {
   // Scedule a Call
   const dt = new Date()
   const hr = dt.getUTCHours
-  if (hr >= 14 && hr < 3) {
+  if (hr >= 3 && hr < 14) {
   await bookingflow.clickOn(bookingflow.callScheduleLocator)
   }
   await bookingflow.clickOn(bookingflow.timeSlotLocator0)

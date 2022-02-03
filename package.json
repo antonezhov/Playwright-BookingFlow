@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "expect.js": "^0.3.1",
+    "node-fetch": "^2.6.7",
     "playwright": "^1.16.3"
   },
   "devDependencies": {
