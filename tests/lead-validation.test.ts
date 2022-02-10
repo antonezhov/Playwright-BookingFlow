@@ -1,9 +1,15 @@
-const { test, chromium, expect } = require('@playwright/test')
-const { HomePage } = require('../pages/home-page.js')
-const { BookingPage } = require('../pages/booking-page.js')
-const salesforce_client = require('../data/salesforce-client.js')
+import { test, chromium, expect } from '@playwright/test'
+import { HomePage } from '../pages/home-page'
+import { BookingPage } from '../pages/booking-page'
+import { data } from '../data/data'
+import { SalesForceClient } from '../data/salesforce-client'
 const sleep = (delay) => new Promise(resolve => setTimeout(resolve, delay))
 
+declare global {
+  interface Date{
+    yyyymmddhhminss: () => string;    
+  }
+}
 
 Date.prototype.yyyymmddhhminss = function () {
   var mm = this.getMonth() + 1; // getMonth() is zero-based
@@ -32,14 +38,18 @@ test('Validation of SalesForce LeadFields after completion of the Booking Flow',
   await homepage.open()
   await homepage.zipCode('90011')
   await homepage.getStarted()
+
+  // Autism Care Select
+  await bookingflow.clickOn(data.btnAutismCare)
+  
   // How Old Is Your Child?
-  await bookingflow.ageSelect(bookingflow.age0_3)
+  await bookingflow.ageSelect(data.age0_3)
   await bookingflow.continue()
   // Has Your Child Been Diagnosed With Autism Spectrum Disorder?
-  await bookingflow.selectOption(bookingflow.yes)
+  await bookingflow.selectOption(data.yes)
   await bookingflow.continue()
   // Do You Have Insurance?
-  await bookingflow.selectOption(bookingflow.yes)
+  await bookingflow.selectOption(data.yes)
   await bookingflow.continue()
   // What’s Your Insurance Provider?
   await bookingflow.providerSelect()
@@ -52,20 +62,20 @@ test('Validation of SalesForce LeadFields after completion of the Booking Flow',
   await bookingflow.submit()
   // Scedule a Call
   const dt = new Date()
-  const hr = dt.getUTCHours
+  const hr:number = dt.getUTCHours()
   if (hr >= 3 && hr < 14) {
-    await bookingflow.clickOn(bookingflow.callScheduleLocator)
+    await bookingflow.clickOn(data.callScheduleLocator)
   }
-  await bookingflow.clickOn(bookingflow.timeSlotLocator0)
+  await bookingflow.clickOn(data.timeSlotLocator0)
   await bookingflow.continue()
   await bookingflow.confirm()
-  await salesforce_client.initSalesforceToken()
+  await SalesForceClient.initSalesforceToken()
 
 
 
   for (let i = 0; i < 17; i++) {
     await sleep(10000)
-    const leadoutput = await salesforce_client.getLeadFieldsByEmail(email)
+    const leadoutput = await SalesForceClient.getLeadFieldsByEmail(email)
     if (leadoutput.totalSize > 0) {
       console.log('leadoutput', JSON.stringify(leadoutput))
 

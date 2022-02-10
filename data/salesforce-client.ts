@@ -1,4 +1,4 @@
-const fetch = require("node-fetch")
+import fetch from "node-fetch"
 
 
 const grant_type = "password"
@@ -9,7 +9,7 @@ const password = "M$vT9Dz<cz4#4Xj0YYneX8TumSKUsYU2FZjjSpH"
 let token = ""
 
 
-module.exports = {
+export const SalesForceClient = {
   initSalesforceToken: async () => {
     const url = 'https://sprouttherapyllc--uat.my.salesforce.com/services/oauth2/token'
     const response = await fetch(url, {
