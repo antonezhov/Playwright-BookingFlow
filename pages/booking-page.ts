@@ -4,56 +4,15 @@ import { data } from '../data/data';
 
 export class BookingPage {
     readonly page: Page
-    // readonly age0_3: string
-    // readonly age4_7: string
-    // readonly ge4_7: string
-    // readonly age8_9: string
-    // readonly age10: string
-    // readonly btnContinue: string
-    // readonly btnSubmit: string
-    // readonly btnConfirm: string
-    // readonly btnGoToHomePage: string
-    // readonly yes: string
-    // readonly no: string
-    // readonly iDontKnow: string
-    // readonly providerLocator: string
-    // readonly provederOption: string
-    // readonly firstnameLocator: string
-    // readonly lastnameLocator: string
-    // readonly emailLocator: string
-    // readonly phoneLocator: string
-    // readonly timeSlotLocator0: string
-    // readonly callScheduleLocator: string
-    // readonly callMeNowLocator: string
-    // readonly btnAutismCare: string
+   
 
     constructor(page: Page) {
         this.page = page;
-        // this.age0_3 = "label[for='0-3yrs']"
-        // this.age4_7 = "label[for='4-7yrs']"
-        // this.age8_9 = "label[for='8-9yrs']"
-        // this.age10 = "label[for='10+yrs']"
-        // this.btnContinue = 'text=Continue'
-        // this.btnSubmit = 'button:has-text("Submit")'
-        // this.btnConfirm = 'button:has-text("Confirm")'
-        // this.btnGoToHomePage = 'button:has-text("Go to Homepage")'
-        // this.btnAutismCare = 'a[class="ServiceSelectionScreen__CardWrapper-sc-1qnccqx-2 ippqOn"]'
-        // this.yes = "label[for='yes']"
-        // this.no = "label[for='no']"
-        // this.iDontKnow = "I Don't Know"
-        // this.providerLocator = 'div[id=provider]'
-        // this.provederOption = '#react-select-2-option-3'
-        // this.firstnameLocator = 'input[name="firstName"]'
-        // this.lastnameLocator = 'input[name="lastName"]'
-        // this.emailLocator = '[placeholder="example@elemy.com"]'
-        // this.phoneLocator = '[data-test-id="phone-input"]'
-        // this.timeSlotLocator0 = '[data-test-id="time-slot-0-0"]'
-        // this.callScheduleLocator = 'button[data-test-id="open-time-slots-modal"]'
-        // this.callMeNowLocator = 'text=Call Me Now'
     }
 
-    async ageSelect(age:string) {
-        await this.page.click(age);
+    async fillField(locator, data) {
+        await this.page.click(locator);
+        await this.page.fill(locator, data);
     }
 
     async continue() {
@@ -72,20 +31,41 @@ export class BookingPage {
         await this.page.click(option);
     }
 
-    async providerSelect() {
-        await this.page.click(data.providerLocator);
-        await this.page.click(data.provederOption);
+    async dropdownSelect(locator1,optionNumber:number) {
+        await this.page.click(locator1);
+        await this.page.click(`#react-select-2-option-${optionNumber}`);
+        
     }
 
     async fillFirstName(firstname) {
         await this.page.fill(data.firstnameLocator, firstname);
     }
 
+
     async fillLastName(lastname) {
         await this.page.fill(data.lastnameLocator, lastname);
     }
 
-    async fillEmail(email) {
+    async fillEmail() {
+
+        Date.prototype.yyyymmddhhminss = function () {
+            var mm = this.getMonth() + 1; // getMonth() is zero-based
+            var dd = this.getDate();
+            var hh = this.getHours();
+            var min = this.getMinutes();
+            var ss = this.getSeconds();
+            return [this.getFullYear(),
+            (mm > 9 ? '' : '0') + mm,
+            (dd > 9 ? '' : '0') + dd,
+            (hh > 9 ? '' : '0') + hh,
+            (min > 9 ? '' : '0') + min,
+            (ss > 9 ? '' : '0') + ss
+            ].join('');
+        };
+
+        var date = new Date();
+        var dateString = date.yyyymmddhhminss();
+        const email = `anton.ezhov+${dateString}@elemy.com`
         await this.page.fill(data.emailLocator, email);
     }
 
