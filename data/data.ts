@@ -1,10 +1,8 @@
 export const data = {
     
+    
     //Booking page variables 
-    age0_3: "label[for='0-3yrs']",
-    age4_7:  "label[for='4-7yrs']",
-    age8_9: "label[for='8-9yrs']",
-    age10: "label[for='10+yrs']",
+    ageLocator: 'input[placeholder="Child’s age in years"]',
     btnContinue: 'text=Continue',
     btnSubmit: 'button:has-text("Submit")',
     btnConfirm: 'button:has-text("Confirm")',
@@ -19,6 +17,9 @@ export const data = {
     lastnameLocator: 'input[name="lastName"]',
     emailLocator: '[placeholder="example@elemy.com"]',
     phoneLocator:'[data-test-id="phone-input"]',
+    passLocator: 'input[id="password"]',
+    refferalLocator: 'div[id="leadReferralSource"]',
+    passConfirmLocator: 'input[id="passwordConfirmation"]',
     timeSlotLocator0: 'button[data-test-id="time-slot-0-0"]',
     callScheduleLocator: 'button[data-test-id="open-time-slots-modal"]',
     callMeNowLocator: 'text=Call Me Now',
@@ -27,4 +28,7 @@ export const data = {
     txtZipCode: 'input[name=zipCode] >> nth=2',
     btnGetStarted : 'button[data-test-id=zip-code-button] >> nth=2',
     btnIntercomClose : 'div[aria-label=Dismiss]'
+
+
+
 }
