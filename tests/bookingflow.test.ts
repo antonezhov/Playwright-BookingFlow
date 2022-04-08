@@ -22,18 +22,18 @@ test('Basic Positive Smoke', async ({ page }) => {
 
   // How Old Is Your Child?
   await bookingflow.fillField(data.ageLocator, '3')
-  await bookingflow.continue()
+  await bookingflow.page.click(data.btnContinue)
   // Has Your Child Been Diagnosed With Autism Spectrum Disorder?
   await bookingflow.selectOption(data.yes)
-  await bookingflow.continue()
+  await bookingflow.page.click(data.btnContinue)
   // Do You Have Insurance?
   await bookingflow.selectOption(data.yes)
-  await bookingflow.continue()
+  await bookingflow.page.click(data.btnContinue)
   // await page.pause();
-  await bookingflow.fillFirstName('Autotest')
-  await bookingflow.fillLastName('User')
+  await bookingflow.fillField(data.firstnameLocator,'Autotest')
+  await bookingflow.fillField(data.lastnameLocator,'User')
   await bookingflow.fillEmail()
-  await bookingflow.fillPhone('(222) 222-222233')
+  await bookingflow.fillField(data.phoneLocator,'(222) 222-222233')
   await bookingflow.fillField(data.passLocator, 'Test111!')
   await bookingflow.fillField(data.passConfirmLocator, 'Test111!')
   await bookingflow.dropdownSelect(data.refferalLocator, 3)
@@ -53,12 +53,12 @@ test('Unqualified by Age Scenario', async ({ page }) => {
 
   // How Old Is Your Child?
   await bookingflow.fillField(data.ageLocator, '10')
-  await bookingflow.continue()
+  await bookingflow.page.click(data.btnContinue)
 
   // Let's Get Started
   await bookingflow.fillEmail()
-  await bookingflow.fillPhone('(222) 222-222233')
-  await bookingflow.submit()
+  await bookingflow.fillField(data.phoneLocator,'(222) 222-222233')
+  await bookingflow.page.click(data.btnSubmit)
   // Go home
   await bookingflow.page.click(data.btnGoToHomePage)
 });
@@ -73,8 +73,8 @@ test('Unqualified by ZipCode Scenario', async ({ page }) => {
 
   // Let's Get Started
   await bookingflow.fillEmail()
-  await bookingflow.fillPhone('(222) 222-222233')
-  await bookingflow.submit()
+  await bookingflow.fillField(data.phoneLocator,'(222) 222-222233')
+  await bookingflow.page.click(data.btnSubmit)
   // Go home
   await bookingflow.page.click(data.btnGoToHomePage)
 });
