@@ -18,7 +18,7 @@ test('Basic Positive Smoke', async ({ page }) => {
   await homepage.getStarted()
 
   // Autism Care Select
-  await bookingflow.clickOn(data.btnAutismCare)
+  await bookingflow.page.click(data.btnAutismCare)
 
   // How Old Is Your Child?
   await bookingflow.fillField(data.ageLocator, '3')
@@ -37,7 +37,7 @@ test('Basic Positive Smoke', async ({ page }) => {
   await bookingflow.fillField(data.passLocator, 'Test111!')
   await bookingflow.fillField(data.passConfirmLocator, 'Test111!')
   await bookingflow.dropdownSelect(data.refferalLocator, 3)
-  await bookingflow.clickOn('text=Start Pre-Approval')
+  await bookingflow.page.click('text=Start Pre-Approval')
 });
 
 test('Unqualified by Age Scenario', async ({ page }) => {
@@ -49,7 +49,7 @@ test('Unqualified by Age Scenario', async ({ page }) => {
   await homepage.getStarted()
 
   // Autism Care Select
-  await bookingflow.clickOn(data.btnAutismCare)
+  await bookingflow.page.click(data.btnAutismCare)
 
   // How Old Is Your Child?
   await bookingflow.fillField(data.ageLocator, '10')
@@ -60,7 +60,7 @@ test('Unqualified by Age Scenario', async ({ page }) => {
   await bookingflow.fillPhone('(222) 222-222233')
   await bookingflow.submit()
   // Go home
-  await bookingflow.clickOn(data.btnGoToHomePage)
+  await bookingflow.page.click(data.btnGoToHomePage)
 });
 
 test('Unqualified by ZipCode Scenario', async ({ page }) => {
@@ -76,5 +76,5 @@ test('Unqualified by ZipCode Scenario', async ({ page }) => {
   await bookingflow.fillPhone('(222) 222-222233')
   await bookingflow.submit()
   // Go home
-  await bookingflow.clickOn(data.btnGoToHomePage)
+  await bookingflow.page.click(data.btnGoToHomePage)
 });

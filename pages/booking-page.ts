@@ -46,6 +46,7 @@ export class BookingPage {
         await this.page.fill(data.lastnameLocator, lastname);
     }
 
+    // Function allow to add yymmddhhss format to crean an unique email
     async fillEmail() {
 
         Date.prototype.yyyymmddhhminss = function () {
@@ -73,7 +74,5 @@ export class BookingPage {
         await this.page.fill(data.phoneLocator, phone);
     }
 
-    async clickOn(locator) {
-        await this.page.click(locator);
-    }
+
 }
