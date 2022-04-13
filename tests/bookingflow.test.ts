@@ -1,6 +1,6 @@
 import { test, chromium, expect } from '@playwright/test'
-import { HomePage } from '../pages/home-page'
-import { BookingPage } from '../pages/booking-page'
+import { HomePage } from '../pages/elemy_home-page'
+import { BookingPage } from '../pages/elemy_booking-page'
 import { data } from '../data/data'
 
 declare global {
