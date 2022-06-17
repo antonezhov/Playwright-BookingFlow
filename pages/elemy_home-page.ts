@@ -14,7 +14,8 @@ export class HomePage {
     }
 
     async open() {
-        await this.page.goto('');
+        const baseURL = data.elemyStageUrl;
+        await this.page.goto(baseURL);
     }
 
     async zipCode(zipCode:string) {
@@ -22,7 +23,7 @@ export class HomePage {
     }
 
     async getStarted() {
-        await this.page.click(data.btnGetStarted);
+        await this.page.click(data.btnGetStarted0);
     }
 
 }

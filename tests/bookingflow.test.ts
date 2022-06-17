@@ -14,12 +14,15 @@ test('Basic Positive Smoke', async ({ page }) => {
   const bookingflow = new BookingPage(page)
 
   await homepage.open()
+  await page.pause();
+  await homepage.page.click(data.btnGetStarted0)
   await homepage.zipCode('90011')
+  // await page.pause();
   await homepage.getStarted()
-
+  // await page.pause();
   // Autism Care Select
-  await bookingflow.page.click(data.btnAutismCare)
-
+  await page.click('text=Autism Care');
+  
   // How Old Is Your Child?
   await bookingflow.fillField(data.ageLocator, '3')
   await bookingflow.page.click(data.btnContinue)
@@ -29,7 +32,7 @@ test('Basic Positive Smoke', async ({ page }) => {
   // Do You Have Insurance?
   await bookingflow.selectOption(data.yes)
   await bookingflow.page.click(data.btnContinue)
-  // await page.pause();
+  await page.pause();
   await bookingflow.fillField(data.firstnameLocator,'Autotest')
   await bookingflow.fillField(data.lastnameLocator,'User')
   await bookingflow.fillEmail()
@@ -37,7 +40,10 @@ test('Basic Positive Smoke', async ({ page }) => {
   await bookingflow.fillField(data.passLocator, 'Test111!')
   await bookingflow.fillField(data.passConfirmLocator, 'Test111!')
   await bookingflow.dropdownSelect(data.refferalLocator, 3)
-  await bookingflow.page.click('text=Start Pre-Approval')
+  
+  await page.pause();
+  await bookingflow.page.click('button:has-text("Join Elemy")')
+  await bookingflow.page.click('Sign In to Elemy')
 });
 
 test('Unqualified by Age Scenario', async ({ page }) => {
@@ -45,11 +51,13 @@ test('Unqualified by Age Scenario', async ({ page }) => {
   const bookingflow = new BookingPage(page)
 
   await homepage.open()
+  await page.pause();
+  await homepage.page.click(data.btnGetStarted0)
   await homepage.zipCode('90011')
   await homepage.getStarted()
 
   // Autism Care Select
-  await bookingflow.page.click(data.btnAutismCare)
+  await page.click('text=Autism Care');
 
   // How Old Is Your Child?
   await bookingflow.fillField(data.ageLocator, '10')

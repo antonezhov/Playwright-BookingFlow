@@ -3,40 +3,40 @@ const { devices } = require('@playwright/test');
 
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
-  timeout: 150000,
+  timeout: 999999,
   
   use: {
-    viewport: { width: 1280, height: 720 },
-    baseURL: 'https://stg.elemy.com',
+    viewport: { width: 640, height: 480 },
+    browserName: 'webkit',
     httpCredentials: {
       username: 'portaldev',
       password: 'portaltest123!',
     },
 
-    browserName: 'chromium',
+   
       headless: false,
       
       launchOptions: {
-        slowMo: 200,
+        slowMo: 500,
         
         
       },
 
   },
-  projects: [
-    {
-      name: 'Desktop Chromium',
-      use: {
-        browserName: 'chromium',
-      },
-    },
+  // projects: [
+  //   {
+  //     name: 'Desktop Chromium',
+  //     use: {
+  //       browserName: 'chromium',
+  //     },
+  //   },
 
     // Test against mobile viewports.
     // {
     //   name: 'Mobile Safari',
     //   use: devices['iPhone 12'],
     // },
-  ],
+  // ],
 };
 
 module.exports = config;
